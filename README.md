@@ -1,58 +1,72 @@
-# DIO - Trilha .NET - API e Entity Framework
-www.dio.me
+# API de Tarefas Desafio da DIO
 
-## Desafio de projeto
-Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de API e Entity Framework, da trilha .NET da DIO.
+API REST desenvolvida com .NET e Entity Framework para gerenciamento de tarefas.
 
-## Contexto
-Você precisa construir um sistema gerenciador de tarefas, onde você poderá cadastrar uma lista de tarefas que permitirá organizar melhor a sua rotina.
+---
 
-Essa lista de tarefas precisa ter um CRUD, ou seja, deverá permitir a você obter os registros, criar, salvar e deletar esses registros.
+## Tecnologias utilizadas
 
-A sua aplicação deverá ser do tipo Web API ou MVC, fique a vontade para implementar a solução que achar mais adequado.
+* .NET
+* Entity Framework Core
+* SQL Server
+* Swagger
 
-A sua classe principal, a classe de tarefa, deve ser a seguinte:
+---
 
-![Diagrama da classe Tarefa](diagrama.png)
+## Como executar
 
-Não se esqueça de gerar a sua migration para atualização no banco de dados.
+### 1. Clonar o repositório
 
-## Métodos esperados
-É esperado que você crie o seus métodos conforme a seguir:
+```bash
+git clone https://github.com/h0wld1ee/trilha-net-api-desafio.git
+cd trilha-net-api-desafio
+```
 
+### 2. Configurar o banco
 
-**Swagger**
-
-
-![Métodos Swagger](swagger.png)
-
-
-**Endpoints**
-
-
-| Verbo  | Endpoint                | Parâmetro | Body          |
-|--------|-------------------------|-----------|---------------|
-| GET    | /Tarefa/{id}            | id        | N/A           |
-| PUT    | /Tarefa/{id}            | id        | Schema Tarefa |
-| DELETE | /Tarefa/{id}            | id        | N/A           |
-| GET    | /Tarefa/ObterTodos      | N/A       | N/A           |
-| GET    | /Tarefa/ObterPorTitulo  | titulo    | N/A           |
-| GET    | /Tarefa/ObterPorData    | data      | N/A           |
-| GET    | /Tarefa/ObterPorStatus  | status    | N/A           |
-| POST   | /Tarefa                 | N/A       | Schema Tarefa |
-
-Esse é o schema (model) de Tarefa, utilizado para passar para os métodos que exigirem
+No arquivo `appsettings.json`:
 
 ```json
-{
-  "id": 0,
-  "titulo": "string",
-  "descricao": "string",
-  "data": "2022-06-08T01:31:07.056Z",
-  "status": "Pendente"
+"ConnectionStrings": {
+  "ConexaoPadrao": "ADICIONE_SUA_CONNECTION_STRING_AQUI"
 }
 ```
 
+---
 
-## Solução
-O código está pela metade, e você deverá dar continuidade obedecendo as regras descritas acima, para que no final, tenhamos um programa funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+### 3. Aplicar migrations
+
+```bash
+dotnet ef database update
+```
+
+---
+
+### 4. Executar
+
+```bash
+dotnet run
+```
+
+## Endpoints
+
+* `GET /ObterTodos`
+* `GET /ObterPorId/{id}`
+* `POST /Criar`
+* `PUT /Atualizar/{id}`
+* `DELETE /Deletar/{id}`
+
+---
+
+## Observações
+
+* Necessário ter instalado SQL Server
+* Migrations já estão incluídas
+*  Configure sua connection string
+
+---
+
+## Autor
+
+Projeto desenvolvido para prática de backend com .NET.
+
